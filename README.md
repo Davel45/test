@@ -1,11 +1,50 @@
-## Стандарти розробки (Code Style & Naming Conventions)
+## 📜 Вибір та адаптація Code Style Guide
 
-### 1. Naming Conventions
-* **Папки та файли:** `kebab-case` (наприклад: `user-profile/`, `main-header.js`).
-* **Класи та компоненти:** `PascalCase` (наприклад: `UserProfile`, `HeaderComponent`).
-* **Змінні та функції:** `camelCase` (наприклад: `getUserData`, `isModalOpen`).
-* **База даних:** `snake_case` (наприклад: `user_id`).
+### 1. Галузеві стандарти (Industry Standards)
 
-### 2. Заборони
-❌ Суворо заборонено: `data`, `info`, `temp`, `val`, `test`, `obj`.
-✅ Замість них використовуйте описові назви: `userList`, `paymentDetails`.
+Наша команда не вигадує правила самостійно, а дотримується загальноприйнятих у галузі стандартів:
+
+* **Frontend (JavaScript/TypeScript):** [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+* **Backend:** [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) *(або замініть на стандарт
+  вашої мови)*
+
+### 2. Naming Conventions (Правила іменування)
+
+#### Backend
+
+* **Папки (Packages):** `snake_case` (короткі назви).
+* **Файли модулів:** `snake_case` (мають відображати сутність).
+* **Класи всередині файлів:** `PascalCase`.
+* **Функції та змінні:** `camelCase` або `snake_case` (відповідно до стандарту мови).
+* **Константи:** `UPPER_SNAKE_CASE`.
+
+#### Frontend
+
+* **Папки:** `kebab-case` (маленькі літери через дефіс).
+* **Компоненти (Файли .tsx / .jsx):** `PascalCase`. Файл має називатися так само, як і головний компонент всередині.
+* **Утиліти, хуки, сервіси (Файли .ts / .js):** `camelCase`.
+* **Стилі (CSS Modules):** `PascalCase.module.css` (щоб відповідати компоненту).
+
+#### База даних
+
+База даних має бути консистентною з Backend-моделями (через ORM).
+
+* **Таблиці:** `snake_case`, множина (наприклад, `users`).
+* **Колонки:** `snake_case`, однина (наприклад, `email`).
+* **Зовнішні ключі (FK):** `суть_id` (наприклад, `user_id`).
+
+### 3. Загальні правила для всіх
+
+* **Boolean змінні:** Мають обов'язково починатися з префіксів `is_`, `has_`, `can_` (наприклад, `isActive`,
+  `hasPermission`).
+* **Абревіатури:** Не пишіть `GetUI`, пишіть `GetUi` (в PascalCase) або `get_ui` (в snake_case).
+* **Заборонені назви:** Офіційно заборонено використання «сміттєвих / Meaningful» назв (`data`, `info`, `temp`) для
+  файлів та сутностей. Файл `data.*` — це "смітник". Краще використовувати конкретні назви, наприклад
+  `product_schemas.*`.
+
+### 4. Formatting та Comments
+
+* **Formatting (Форматування):** Розмір відступу — 2 пробіли (вже налаштовано для всієї команди у файлі
+  `.editorconfig`). Максимальна довжина рядка — 100 символів. Використання крапки з комою обов'язкове для Frontend.
+* **Comments (Коментарі):** Обов'язкове використання `JSDoc` (для Frontend) або `JavaDoc` (для Backend) для опису
+  публічних методів та складних функцій.
